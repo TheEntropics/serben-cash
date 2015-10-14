@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014171141) do
+ActiveRecord::Schema.define(version: 20151014180726) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20151014171141) do
     t.string   "mail"
     t.boolean  "banned"
     t.boolean  "deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,9 +1,20 @@
-<h1>Role</h1>
+<h1>User</h1>
 <p>Name: <%= @user.name %>
 <p>Username: <%= @user.username %>
 <p>Mail: <%= @user.mail %>
 <p>Banned: <%= @user.banned %>
 <p>Deleted: <%= @user.deleted %>
+
+<p>Roles:</p>
+<ul>
+  <% @roles.each do |role| %>
+    <li><%= role.name %> <%= link_to "Remove", user_destroy_role_path(@user, role), method: :delete %></li>
+  <% end %>
+</ul>
+<%= form_for @user, url: user_new_role_path(@user), method: :post do |f| %>
+  <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, "id", "name") %>
+  <%= f.submit "Add role" %>
+<% end %>
 
 <p><%= link_to "Update", edit_user_path(@user) %>
 <p><%= link_to "Destroy", user_path(@user), method: :delete %>

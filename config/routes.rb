@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :roles
-  resources :users
+  resources :users do
+    delete '/:role_id', action: 'destroy_role', as: 'destroy_role'
+    post '/new_role', action: 'new_role', as: 'new_role'
+  end
 end
