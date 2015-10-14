@@ -1,0 +1,8 @@
+<h1>Editing Role</h1>
+
+<%= form_for @role do |f| %>
+  <%= render 'form', role: @role, f: f %>
+<% end %>
+
+<%= link_to 'Show', @role %> |
+<%= link_to 'Back', root_path %>
