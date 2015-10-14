@@ -2,7 +2,7 @@ class RolesController < ApplicationController
   before_action :load_role, only: [:show, :update, :edit, :destroy]
 
   def index
-    @roles = Roles.all
+    @roles = Role.all
     respond_to do |f|
       f.html
       f.json { render json: @roles }
@@ -26,7 +26,7 @@ class RolesController < ApplicationController
   end
 
   def create
-    @role = Roles.new(role_params)
+    @role = Role.new(role_params)
     if @role.save
       redirect_to @role
     else
@@ -34,7 +34,7 @@ class RolesController < ApplicationController
     end
   end
   def new
-    @role = Roles.new
+    @role = Role.new
   end
 
   def destroy
@@ -48,10 +48,10 @@ class RolesController < ApplicationController
   private
 
   def load_role
-    @role = Roles.find params[:id]
+    @role = Role.find params[:id]
   end
 
   def role_params
-    params.require(:roles).permit(:name)
+    params.require(:role).permit(:name)
   end
 end

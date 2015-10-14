@@ -1,0 +1,9 @@
+<h1>Role</h1>
+<p>Name: <%= @user.name %>
+<p>Username: <%= @user.username %>
+<p>Mail: <%= @user.mail %>
+<p>Banned: <%= @user.banned %>
+<p>Deleted: <%= @user.deleted %>
+
+<p><%= link_to "Update", edit_user_path(@user) %>
+<p><%= link_to "Destroy", user_path(@user), method: :delete %>
