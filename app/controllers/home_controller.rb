@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @payments = Payment.includes(:user, :month).all
     @events = Event.all
     @months = Month.all
+    @notifications = Notification.visible
 
     @grid = {}
     @payments.each do |payment|
