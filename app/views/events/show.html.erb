@@ -1,0 +1,7 @@
+<h1>Event</h1>
+<p>Date: <%= @event.date %>
+<p>Description: <%= @event.description %>
+<p>Amount: <%= @event.amount %>
+
+<p><%= link_to "Update", edit_event_path(@event) %>
+<p><%= link_to "Destroy", event_path(@event), method: :delete %>

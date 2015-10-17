@@ -1,0 +1,8 @@
+<h1>Editing Event</h1>
+
+<%= form_for @event do |f| %>
+  <%= render 'form', event: @event, f: f %>
+<% end %>
+
+<%= link_to 'Show', @event %> |
+<%= link_to 'Back', root_path %>

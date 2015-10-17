@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :roles
   resources :months
+  resources :events
   resources :users do
     delete '/:role_id', action: 'destroy_role', as: 'destroy_role'
     post '/new_role', action: 'new_role', as: 'new_role'
