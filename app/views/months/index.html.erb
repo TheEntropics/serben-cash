@@ -15,7 +15,7 @@
     <tr>
       <td><%= link_to month.id, month_path(month) %></td>
       <td><%= month.name %></td>
-      <td><%= month.firstDay %></td>
+      <td><%= format_date month.firstDay %></td>
       <td>
         <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-default btn-xs' %>
         <%= link_to 'Destroy', month_path(month),

@@ -17,7 +17,7 @@
       <td><%= link_to notification.id, notification_path(notification) %></td>
       <td><%= notification.text %></td>
       <td><%= notification.importance %></td>
-      <td><%= notification.elapseDate %></td>
+      <td><%= format_date notification.elapseDate %></td>
       <td>
         <%= link_to 'Edit', edit_notification_path(notification), class: 'btn btn-default btn-xs' %>
         <%= link_to 'Destroy', notification_path(notification),

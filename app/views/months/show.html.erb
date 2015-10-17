@@ -6,7 +6,7 @@
   <dt><strong><%= Month.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @month.name %></dd>
   <dt><strong><%= Month.human_attribute_name(:firstDay) %>:</strong></dt>
-  <dd><%= @month.firstDay %></dd>
+  <dd><%= format_date @month.firstDay %></dd>
 </dl>
 
 <br>

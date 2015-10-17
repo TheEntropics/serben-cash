@@ -8,7 +8,7 @@
   <dt><strong><%= Notification.human_attribute_name(:importance) %>:</strong></dt>
   <dd><%= @notification.importance %></dd>
   <dt><strong><%= Notification.human_attribute_name(:elapseDate) %>:</strong></dt>
-  <dd><%= @notification.elapseDate %></dd>
+  <dd><%= format_date @notification.elapseDate %></dd>
 </dl>
 
 <br>
