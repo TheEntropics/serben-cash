@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <% @grid.each do |user, cols| %>
-      <tr>
+      <tr class="<%= 'banned' if user.banned %> <%= 'deleted' if user.deleted %>">
         <td><%= user.name %> <small><%= user.username %></small></td>
         <% @months.each do |month| %>
           <% if cols[month] == nil %>
