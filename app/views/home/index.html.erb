@@ -1,17 +1,19 @@
-<h1>Home</h1>
-<% unless @notifications.empty? %>
-  <h2>Notifications</h2>
-  <ul>
-    <% @notifications.each do |notification| %>
-      <li><%= notification.text %></li>
-    <% end %>
-  </ul>
+<div class="page-header">
+  <h1>Home</h1>
+</div>
+
+<% @notifications.each do |notification| %>
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <%= notification.text %>
+    </div>
+  </div>
 <% end %>
-<table>
+
+<table class="table">
   <thead>
     <tr>
       <th>User</th>
-      <th>Username</th>
       <% @months.each do |month| %>
         <th><%= month.name %></th>
       <% end %>
@@ -20,8 +22,7 @@
   <tbody>
     <% @grid.each do |user, cols| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.username %></td>
+        <td><%= user.name %> <small><%= user.username %></small></td>
         <% @months.each do |month| %>
           <% if cols[month] == nil %>
             <td>N</td>
@@ -35,7 +36,7 @@
 </table>
 
 <h2>Balance</h2>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Date</th>
@@ -48,7 +49,7 @@
       <tr>
         <td><%= event.date %></td>
         <td><%= event.description %></td>
-        <td><%= number_to_currency(event.amount) %></td>
+        <td><%= number_to_currency(event.amount, unit: '€ ') %></td>
       </tr>
     <% end %>
   </tbody>
