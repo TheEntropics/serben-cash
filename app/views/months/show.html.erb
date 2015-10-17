@@ -1,0 +1,6 @@
+<h1>Month</h1>
+<p>Name: <%= @month.name %>
+<p>First Day: <%= @month.firstDay %>
+
+<p><%= link_to "Update", edit_month_path(@month) %>
+<p><%= link_to "Destroy", month_path(@month), method: :delete %>

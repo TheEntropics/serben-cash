@@ -1,0 +1,7 @@
+<h1>New Month</h1>
+
+<%= form_for @month, url: months_path do |f| %>
+  <%= render 'form', month: @month, f: f %>
+<% end %>
+
+<%= link_to 'Back', root_path %>

@@ -1,0 +1,27 @@
+<% if month.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(month.errors.count, "error") %> prohibited this month from being saved:</h2>
+
+    <ul>
+    <% month.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form_group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form_group">
+      <%= f.label :firstDay %><br>
+      <%= f.date_field :firstDay, class: 'form-control' %>
+    </div>
+    <div class="actions form-group">
+      <%= f.submit class: ['btn', 'btn-success'] %>
+    </div>
+  </div>
+</div>
