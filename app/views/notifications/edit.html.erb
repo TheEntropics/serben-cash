@@ -1,0 +1,8 @@
+<h1>Editing Notification</h1>
+
+<%= form_for @notification do |f| %>
+  <%= render 'form', notification: @notification, f: f %>
+<% end %>
+
+<%= link_to 'Show', @notification %> |
+<%= link_to 'Back', root_path %>

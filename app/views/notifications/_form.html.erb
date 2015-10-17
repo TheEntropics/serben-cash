@@ -1,0 +1,31 @@
+<% if notification.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(notification.errors.count, "error") %> prohibited this notification from being saved:</h2>
+
+    <ul>
+    <% notification.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form_group">
+      <%= f.label :text %><br>
+      <%= f.text_area :text, class: 'form-control' %>
+    </div>
+    <div class="form_group">
+      <%= f.label :importance %><br>
+      <%= f.text_field :importance, class: 'form-control' %>
+    </div>
+    <div class="form_group">
+      <%= f.label :elapseDate %><br>
+      <%= f.datetime_field :elapseDate, class: 'form-control' %>
+    </div>
+    <div class="actions form-group">
+      <%= f.submit class: ['btn', 'btn-success'] %>
+    </div>
+  </div>
+</div>

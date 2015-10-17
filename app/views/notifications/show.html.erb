@@ -1,0 +1,7 @@
+<h1>Notification</h1>
+<p>Text: <%= @notification.text %>
+<p>Importance: <%= @notification.importance %>
+<p>Elapse date: <%= @notification.elapseDate %>
+
+<p><%= link_to "Update", edit_notification_path(@notification) %>
+<p><%= link_to "Destroy", notification_path(@notification), method: :delete %>
