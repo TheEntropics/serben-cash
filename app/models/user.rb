@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
 
   has_many :roles, through: :users_role
   has_many :users_role
+  has_many :payments
 end

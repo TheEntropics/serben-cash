@@ -1,0 +1,6 @@
+<h1>Payment</h1>
+<p>User name: <%= @payment.user.name %>
+<p>Month name: <%= @payment.month.name %>
+
+<p><%= link_to "Update", edit_payment_path(@payment) %>
+<p><%= link_to "Destroy", payment_path(@payment), method: :delete %>

@@ -1,0 +1,6 @@
+<h1>Payments</h1>
+<ul>
+  <% @payments.each do |payment| %>
+    <li><%= link_to "#{payment.user.name} - #{payment.month.name}", payment %></li>
+  <% end %>
+</ul>

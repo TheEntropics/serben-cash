@@ -1,0 +1,27 @@
+<% if payment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+    <ul>
+    <% payment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form_group">
+      <%= f.label :user %><br>
+      <%= f.select :user_id, options_from_collection_for_select(@users, "id", "name"), class: 'form-control' %>
+    </div>
+    <div class="form_group">
+      <%= f.label :month %><br>
+      <%= f.select :month_id, options_from_collection_for_select(@months, "id", "name"), class: 'form-control' %>
+    </div>
+    <div class="actions form-group">
+      <%= f.submit class: ['btn', 'btn-success'] %>
+    </div>
+  </div>
+</div>
