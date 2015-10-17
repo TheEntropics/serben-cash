@@ -1,31 +1,43 @@
-<% if notification.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(notification.errors.count, "error") %> prohibited this notification from being saved:</h2>
-
-    <ul>
-    <% notification.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="form_group">
-      <%= f.label :text %><br>
-      <%= f.text_area :text, class: 'form-control' %>
+<%= form_for @notification, :html => { class: "form-horizontal notification" } do |f| %>
+  <% if @notification.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@notification.errors.count, "error") %> prohibited this notification from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @notification.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="form_group">
-      <%= f.label :importance %><br>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :text, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :text, class: 'form-control' %>
+    </div>
+    <%= error_span(@notification[:text]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :importance, class: 'control-label' %>
+    <div class="controls">
       <%= f.text_field :importance, class: 'form-control' %>
     </div>
-    <div class="form_group">
-      <%= f.label :elapseDate %><br>
-      <%= f.datetime_field :elapseDate, class: 'form-control' %>
-    </div>
-    <div class="actions form-group">
-      <%= f.submit class: ['btn', 'btn-success'] %>
-    </div>
+    <%= error_span(@notification[:importance]) %>
   </div>
-</div>
+  <div class="control-group">
+    <%= f.label :elapseDate, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :elapseDate, class: 'form-control' %>
+    </div>
+    <%= error_span(@notification[:elapseDate]) %>
+  </div>
+
+
+  <%= f.submit nil, class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', notifications_path, class: 'btn btn-default' %>
+
+<% end %>

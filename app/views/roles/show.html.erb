@@ -1,5 +1,17 @@
-<h1>Role</h1>
-Name: <%= @role.name %>
+<div class="page-header">
+  <h1>Role</h1>
+</div>
 
-<p><%= link_to "Update", edit_role_path(@role) %>
-<p><%= link_to "Destroy", role_path(@role), method: :delete %>
+<dl class="dl-horizontal">
+  <dt><strong><%= Role.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @role.name %></dd>
+</dl>
+
+
+<br>
+<%= link_to 'Back', roles_path, class: 'btn btn-default'  %>
+<%= link_to 'Edit', edit_role_path(@role), class: 'btn btn-default' %>
+<%= link_to 'Destroy', role_path(@role),
+            method: 'delete',
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-danger' %>

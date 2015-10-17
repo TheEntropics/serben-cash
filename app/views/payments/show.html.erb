@@ -1,6 +1,18 @@
-<h1>Payment</h1>
-<p>User name: <%= @payment.user.name %>
-<p>Month name: <%= @payment.month.name %>
+<div class="page-header">
+  <h1>Payment</h1>
+</div>
 
-<p><%= link_to "Update", edit_payment_path(@payment) %>
-<p><%= link_to "Destroy", payment_path(@payment), method: :delete %>
+<dl class="dl-horizontal">
+  <dt><strong><%= Payment.human_attribute_name(:user) %>:</strong></dt>
+  <dd><%= @payment.user.name %></dd>
+  <dt><strong><%= Payment.human_attribute_name(:month) %>:</strong></dt>
+  <dd><%= @payment.month.name %></dd>
+</dl>
+
+<br>
+<%= link_to 'Back', payments_path, class: 'btn btn-default'  %>
+<%= link_to 'Edit', edit_payment_path(@payment), class: 'btn btn-default' %>
+<%= link_to 'Destroy', payment_path(@payment),
+            method: 'delete',
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-danger' %>

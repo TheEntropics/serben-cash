@@ -1,6 +1,29 @@
-<h1>Roles</h1>
-<ul>
+<div class="page-header">
+  <h1>Roles</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= Role.human_attribute_name(:id) %></th>
+    <th><%= Role.human_attribute_name(:name) %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @roles.each do |role| %>
-    <li><%= link_to role.name, role %></li>
+    <tr>
+      <td><%= link_to role.id, role_path(role) %></td>
+      <td><%= role.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_role_path(role), class: 'btn btn-default btn-xs' %>
+        <%= link_to 'Destroy', role_path(role),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+
+<%= link_to 'New Role', new_role_path, class: 'btn btn-primary' %>

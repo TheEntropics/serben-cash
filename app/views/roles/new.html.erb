@@ -1,7 +1,4 @@
-<h1>New Role</h1>
-
-<%= form_for @role, url: roles_path do |f| %>
-  <%= render 'form', role: @role, f: f %>
-<% end %>
-
-<%= link_to 'Back', root_path %>
+<div class="page-header">
+  <h1>New Role</h1>
+</div>
+<%= render 'form' %>

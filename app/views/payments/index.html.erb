@@ -1,6 +1,31 @@
-<h1>Payments</h1>
-<ul>
+<div class="page-header">
+  <h1>Payments</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= Payment.human_attribute_name(:id) %></th>
+    <th><%= Payment.human_attribute_name(:payment) %></th>
+    <th><%= Payment.human_attribute_name(:month) %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @payments.each do |payment| %>
-    <li><%= link_to "#{payment.user.name} - #{payment.month.name}", payment %></li>
+    <tr>
+      <td><%= link_to payment.id, payment_path(payment) %></td>
+      <td><%= payment.user.name %></td>
+      <td><%= payment.month.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_payment_path(payment), class: 'btn btn-default btn-xs' %>
+        <%= link_to 'Destroy', payment_path(payment),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+
+<%= link_to 'New Payment', new_payment_path, class: 'btn btn-primary' %>

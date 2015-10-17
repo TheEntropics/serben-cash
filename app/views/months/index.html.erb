@@ -1,6 +1,31 @@
-<h1>Months</h1>
-<ul>
+<div class="page-header">
+  <h1>Months</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= Month.human_attribute_name(:id) %></th>
+    <th><%= Month.human_attribute_name(:name) %></th>
+    <th><%= Month.human_attribute_name(:firstDay) %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @months.each do |month| %>
-    <li><%= link_to month.name, month %></li>
+    <tr>
+      <td><%= link_to month.id, month_path(month) %></td>
+      <td><%= month.name %></td>
+      <td><%= month.firstDay %></td>
+      <td>
+        <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-default btn-xs' %>
+        <%= link_to 'Destroy', month_path(month),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+
+<%= link_to 'New Month', new_month_path, class: 'btn btn-primary' %>

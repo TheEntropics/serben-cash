@@ -1,8 +1,4 @@
-<h1>Editing Month</h1>
-
-<%= form_for @month do |f| %>
-  <%= render 'form', month: @month, f: f %>
-<% end %>
-
-<%= link_to 'Show', @month %> |
-<%= link_to 'Back', root_path %>
+<div class="page-header">
+  <h1>Edit Month</h1>
+</div>
+<%= render 'form' %>

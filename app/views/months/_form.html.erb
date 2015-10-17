@@ -1,27 +1,36 @@
-<% if month.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(month.errors.count, "error") %> prohibited this month from being saved:</h2>
+<%= form_for @month, :html => { class: "form-horizontal month" } do |f| %>
+  <% if @month.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@month.errors.count, "error") %> prohibited this month from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @month.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% month.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="form_group">
-      <%= f.label :name %><br>
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
       <%= f.text_field :name, class: 'form-control' %>
     </div>
-    <div class="form_group">
-      <%= f.label :firstDay %><br>
-      <%= f.date_field :firstDay, class: 'form-control' %>
-    </div>
-    <div class="actions form-group">
-      <%= f.submit class: ['btn', 'btn-success'] %>
-    </div>
+    <%= error_span(@month[:name]) %>
   </div>
-</div>
+  <div class="control-group">
+    <%= f.label :firstDay, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :firstDay, class: 'form-control' %>
+    </div>
+    <%= error_span(@month[:firstDay]) %>
+  </div>
+
+
+  <%= f.submit nil, class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', months_path, class: 'btn btn-default' %>
+
+<% end %>

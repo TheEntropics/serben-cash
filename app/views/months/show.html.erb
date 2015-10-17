@@ -1,6 +1,18 @@
-<h1>Month</h1>
-<p>Name: <%= @month.name %>
-<p>First Day: <%= @month.firstDay %>
+<div class="page-header">
+  <h1>Month</h1>
+</div>
 
-<p><%= link_to "Update", edit_month_path(@month) %>
-<p><%= link_to "Destroy", month_path(@month), method: :delete %>
+<dl class="dl-horizontal">
+  <dt><strong><%= Month.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @month.name %></dd>
+  <dt><strong><%= Month.human_attribute_name(:firstDay) %>:</strong></dt>
+  <dd><%= @month.firstDay %></dd>
+</dl>
+
+<br>
+<%= link_to 'Back', months_path, class: 'btn btn-default'  %>
+<%= link_to 'Edit', edit_month_path(@month), class: 'btn btn-default' %>
+<%= link_to 'Destroy', month_path(@month),
+            method: 'delete',
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-danger' %>

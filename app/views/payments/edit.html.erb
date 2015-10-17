@@ -1,8 +1,4 @@
-<h1>Editing Payment</h1>
-
-<%= form_for @payment do |f| %>
-  <%= render 'form', payment: @payment, f: f %>
-<% end %>
-
-<%= link_to 'Show', @payment %> |
-<%= link_to 'Back', root_path %>
+<div class="page-header">
+  <h1>Edit Payment</h1>
+</div>
+<%= render 'form' %>

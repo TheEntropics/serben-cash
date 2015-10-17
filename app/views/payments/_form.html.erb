@@ -1,27 +1,36 @@
-<% if payment.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+<%= form_for @payment, :html => { class: "form-horizontal payment" } do |f| %>
+  <% if @payment.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @payment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% payment.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
+  <div class="control-group">
+    <%= f.label :user, class: 'control-label' %>
+    <div class="controls">
+      <%= f.select :user_id, options_from_collection_for_select(@users, "id", "name"), {}, class: 'form-control' %>
+    </div>
+    <%= error_span(@payment[:user_id]) %>
   </div>
+  <div class="control-group">
+    <%= f.label :month, class: 'control-label' %>
+    <div class="controls">
+      <%= f.select :month_id, options_from_collection_for_select(@months, "id", "name"), {}, class: 'form-control' %>
+    </div>
+    <%= error_span(@payment[:month_id]) %>
+  </div>
+
+
+  <%= f.submit nil, class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', payments_path, class: 'btn btn-default' %>
+
 <% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="form_group">
-      <%= f.label :user %><br>
-      <%= f.select :user_id, options_from_collection_for_select(@users, "id", "name"), class: 'form-control' %>
-    </div>
-    <div class="form_group">
-      <%= f.label :month %><br>
-      <%= f.select :month_id, options_from_collection_for_select(@months, "id", "name"), class: 'form-control' %>
-    </div>
-    <div class="actions form-group">
-      <%= f.submit class: ['btn', 'btn-success'] %>
-    </div>
-  </div>
-</div>

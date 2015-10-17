@@ -1,8 +1,4 @@
-<h1>Editing Event</h1>
-
-<%= form_for @event do |f| %>
-  <%= render 'form', event: @event, f: f %>
-<% end %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', root_path %>
+<div class="page-header">
+  <h1>Edit Event</h1>
+</div>
+<%= render 'form' %>

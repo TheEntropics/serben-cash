@@ -1,6 +1,33 @@
-<h1>Notifications</h1>
-<ul>
+<div class="page-header">
+  <h1>Notifications</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= Notification.human_attribute_name(:id) %></th>
+    <th><%= Notification.human_attribute_name(:text) %></th>
+    <th><%= Notification.human_attribute_name(:importance) %></th>
+    <th><%= Notification.human_attribute_name(:elapseDate) %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @notifications.each do |notification| %>
-    <li><%= link_to notification.name, notification %></li>
+    <tr>
+      <td><%= link_to notification.id, notification_path(notification) %></td>
+      <td><%= notification.text %></td>
+      <td><%= notification.importance %></td>
+      <td><%= notification.elapseDate %></td>
+      <td>
+        <%= link_to 'Edit', edit_notification_path(notification), class: 'btn btn-default btn-xs' %>
+        <%= link_to 'Destroy', notification_path(notification),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+
+<%= link_to 'New Notification', new_notification_path, class: 'btn btn-primary' %>

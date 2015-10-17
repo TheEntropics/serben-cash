@@ -1,6 +1,33 @@
-<h1>Events</h1>
-<ul>
+<div class="page-header">
+  <h1>Events</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= Event.human_attribute_name(:id) %></th>
+    <th><%= Event.human_attribute_name(:date) %></th>
+    <th><%= Event.human_attribute_name(:description) %></th>
+    <th><%= Event.human_attribute_name(:amount) %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @events.each do |event| %>
-    <li><%= link_to event.name, event %></li>
+    <tr>
+      <td><%= link_to event.id, event_path(event) %></td>
+      <td><%= event.date %></td>
+      <td><%= event.description %></td>
+      <td><%= number_to_currency(event.amount) %></td>
+      <td>
+        <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-default btn-xs' %>
+        <%= link_to 'Destroy', event_path(event),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+
+<%= link_to 'New Event', new_event_path, class: 'btn btn-primary' %>

@@ -1,20 +1,42 @@
-<h1>User</h1>
-<p>Name: <%= @user.name %>
-<p>Username: <%= @user.username %>
-<p>Mail: <%= @user.mail %>
-<p>Banned: <%= @user.banned %>
-<p>Deleted: <%= @user.deleted %>
+<div class="page-header">
+  <h1>User</h1>
+</div>
 
-<p>Roles:</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= User.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @user.name %></dd>
+  <dt><strong><%= User.human_attribute_name(:username) %>:</strong></dt>
+  <dd><%= @user.username %></dd>
+  <dt><strong><%= User.human_attribute_name(:mail) %>:</strong></dt>
+  <dd><%= @user.mail %></dd>
+  <dt><strong><%= User.human_attribute_name(:banned) %>:</strong></dt>
+  <dd><%= @user.banned ? 'Y' : 'N' %></dd>
+  <dt><strong><%= User.human_attribute_name(:deleted) %>:</strong></dt>
+  <dd><%= @user.deleted ? 'Y' : 'N' %></dd>
+</dl>
+
+<h2>Roles:</h2>
 <ul>
   <% @roles.each do |role| %>
-    <li><%= role.name %> <%= link_to "Remove", user_destroy_role_path(@user, role), method: :delete %></li>
+    <li>
+      <%= role.name %>
+      <%= link_to "Remove", user_destroy_role_path(@user, role), method: :delete,
+                  class: ['btn', 'btn-danger', 'btn-xs'] %>
+    </li>
   <% end %>
 </ul>
-<%= form_for @user, url: user_new_role_path(@user), method: :post do |f| %>
-  <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, "id", "name") %>
-  <%= f.submit "Add role" %>
+<%= form_for @user, url: user_new_role_path(@user), method: :post, html: {class: 'form-inline'} do |f| %>
+  <div class="form-group">
+    <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, "id", "name"),
+                   class: 'form-control' %>
+    <%= f.submit "Add role", class: ['btn', 'btn-primary'] %>
+  </div>
 <% end %>
 
-<p><%= link_to "Update", edit_user_path(@user) %>
-<p><%= link_to "Destroy", user_path(@user), method: :delete %>
+<br>
+  <%= link_to 'Back', users_path, class: 'btn btn-default'  %>
+  <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default' %>
+  <%= link_to 'Destroy', user_path(@user),
+                method: 'delete',
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-danger' %>
