@@ -1,5 +1,13 @@
 class HomeController < ApplicationController
   def index
-    render text: 'Timur'
+    @payments = Payment.includes(:user, :month).all
+    @events = Event.all
+    @months = Month.all
+
+    @grid = {}
+    @payments.each do |payment|
+      @grid[payment.user] ||= {}
+      @grid[payment.user][payment.month] = payment
+    end
   end
 end

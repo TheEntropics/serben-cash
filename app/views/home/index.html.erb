@@ -1,0 +1,27 @@
+<h1>Home</h1>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Username</th>
+      <% @months.each do |month| %>
+        <th><%= month.name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @grid.each do |user, cols| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.username %></td>
+        <% @months.each do |month| %>
+          <% if cols[month] == nil %>
+            <td>N</td>
+          <% else %>
+            <td>Y</td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
