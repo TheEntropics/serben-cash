@@ -1,5 +1,5 @@
 <% @notifications.each do |notification| %>
-  <div class="panel panel-primary">
+  <div class="panel panel-primary panel-<%= notification.importance %>">
     <div class="panel-body">
       <%= notification.text %>
     </div>
