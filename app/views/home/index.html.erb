@@ -18,7 +18,13 @@
   <tbody>
     <% @grid.each do |user, cols| %>
       <tr class="<%= 'banned' if user.banned %> <%= 'deleted' if user.deleted %>">
-        <td><%= user.name %> <small><%= user.username %></small></td>
+        <td>
+          <%= user.name %>
+          <small><%= user.username %></small>
+          <% user.roles.each do |role| %>
+            <span class="label label-default"><%= role.name %></span>
+          <% end %>
+        </td>
         <% @months.each do |month| %>
           <% if cols[month] == nil %>
             <td><%= false_mark %></td>
