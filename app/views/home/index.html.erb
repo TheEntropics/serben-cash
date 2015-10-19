@@ -13,6 +13,9 @@
       <% @months.each do |month| %>
         <th><%= month.name %></th>
       <% end %>
+      <% if current_user %>
+        <th>Actions</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -32,10 +35,20 @@
             <td><%= true_mark %></td>
           <% end %>
         <% end %>
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_user_path(user), class: ['btn', 'btn-warning', 'btn-xs'] %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h2>This month <small><%= @current_month.name %></small></h2>
+<div class="progress">
+  <div class="progress-bar" style="width: <%= 100.0*@current_month_paid/@total_per_month %>%;">
+    <%= number_to_currency @current_month_paid, unit: '€ ' %> / <%= number_to_currency @total_per_month, unit: '€ ' %>
+  </div>
+</div>
 
 <h2>Balance</h2>
 <table class="table">
