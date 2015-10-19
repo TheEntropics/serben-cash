@@ -65,6 +65,11 @@ class PaymentsController < ApplicationController
   def destroy
     authorize @payment
 
+    event = @payment.event
+    if event.payments.count == 1
+      event.destroy!
+    end
+
     if @payment.destroy
       redirect_to root_path
     else

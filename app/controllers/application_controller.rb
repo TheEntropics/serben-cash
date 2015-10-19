@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    @current_user ||= Credential.find(session[:user_id]) rescue nil
+    if @current_user.nil?
+      @current_user = Credential.find(session[:user_id]) rescue false
+    end
+    @current_user
   end
 end

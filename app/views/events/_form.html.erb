@@ -32,7 +32,7 @@
     <div class="control-group">
       <%= f.label :amount, class: 'control-label' %>
       <div class="controls">
-        <%= f.number_field :amount, class: 'form-control' %>
+        <%= f.number_field :amount, class: 'form-control', step: 0.01 %>
       </div>
       <%= error_span(@event[:amount]) %>
     </div>

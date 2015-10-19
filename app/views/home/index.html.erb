@@ -59,6 +59,14 @@
 </div>
 <div class="clearfix"></div>
 
+<h3>Statistics</h3>
+<dl class="dl-horizontal">
+  <dt>Registered months</dt><dd><%= @months.size %></dd>
+  <dt>Total amount</dt><dd><%= number_to_currency @total_balance, unit: '€ ' %></dd>
+  <dt>Average per month</dt><dd><%= number_to_currency @total_balance/@months.size, unit: '€ ' %></dd>
+  <dt>Delta</dt><dd><%= number_to_currency @total_balance-@total_per_month*@months.size, unit: '€ ' %></dd>
+</dl>
+
 <h2>Balance</h2>
 <table class="table">
   <thead>

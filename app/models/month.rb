@@ -1,6 +1,5 @@
 class Month < ActiveRecord::Base
-  validates_presence_of :name, :firstDay
-  validates_uniqueness_of :name
+  validates_presence_of :firstDay
   validates_uniqueness_of :firstDay
 
   default_scope ->{ order(:firstDay) }
