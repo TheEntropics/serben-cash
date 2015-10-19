@@ -14,21 +14,24 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, class: 'form-control' %>
+  <div class="row"><div class="col-md-6">
+    <div class="control-group">
+      <%= f.label :name, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <%= error_span(@month[:name]) %>
     </div>
-    <%= error_span(@month[:name]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :firstDay, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :firstDay, class: 'form-control' %>
+    <div class="control-group">
+      <%= f.label :firstDay, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :firstDay, class: 'form-control' %>
+      </div>
+      <%= error_span(@month[:firstDay]) %>
     </div>
-    <%= error_span(@month[:firstDay]) %>
-  </div>
-
+  </div></div>
+  <div class="clearfix"></div>
+  <br>
 
   <%= f.submit nil, class: 'btn btn-primary' %>
   <%= link_to 'Cancel', months_path, class: 'btn btn-default' %>

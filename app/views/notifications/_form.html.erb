@@ -14,28 +14,31 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :text, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :text, class: 'form-control' %>
+  <div class="row"><div class="col-md-6">
+    <div class="control-group">
+      <%= f.label :text, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :text, class: 'form-control' %>
+      </div>
+      <%= error_span(@notification[:text]) %>
     </div>
-    <%= error_span(@notification[:text]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :importance, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :importance, class: 'form-control' %>
+    <div class="control-group">
+      <%= f.label :importance, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :importance, class: 'form-control' %>
+      </div>
+      <%= error_span(@notification[:importance]) %>
     </div>
-    <%= error_span(@notification[:importance]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :elapseDate, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :elapseDate, class: 'form-control' %>
+    <div class="control-group">
+      <%= f.label :elapseDate, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :elapseDate, class: 'form-control' %>
+      </div>
+      <%= error_span(@notification[:elapseDate]) %>
     </div>
-    <%= error_span(@notification[:elapseDate]) %>
-  </div>
-
+  </div></div>
+  <div class="clearfix"></div>
+  <br>
 
   <%= f.submit nil, class: 'btn btn-primary' %>
   <%= link_to 'Cancel', notifications_path, class: 'btn btn-default' %>

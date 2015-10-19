@@ -14,21 +14,24 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :user, class: 'control-label' %>
-    <div class="controls">
-      <%= f.select :user_id, options_from_collection_for_select(@users, "id", "name"), {}, class: 'form-control' %>
+  <div class="row"><div class="col-md-6">
+    <div class="control-group">
+      <%= f.label :user, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :user_id, options_from_collection_for_select(@users, "id", "name"), {}, class: 'form-control' %>
+      </div>
+      <%= error_span(@payment[:user_id]) %>
     </div>
-    <%= error_span(@payment[:user_id]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :month, class: 'control-label' %>
-    <div class="controls">
-      <%= f.select :month_id, options_from_collection_for_select(@months, "id", "name"), {}, class: 'form-control' %>
+    <div class="control-group">
+      <%= f.label :month, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :month_id, options_from_collection_for_select(@months, "id", "name"), {}, class: 'form-control' %>
+      </div>
+      <%= error_span(@payment[:month_id]) %>
     </div>
-    <%= error_span(@payment[:month_id]) %>
-  </div>
-
+  </div></div>
+  <div class="clearfix"></div>
+  <br>
 
   <%= f.submit nil, class: 'btn btn-primary' %>
   <%= link_to 'Cancel', payments_path, class: 'btn btn-default' %>
