@@ -20,17 +20,22 @@
   <% @roles.each do |role| %>
     <li>
       <%= role.name %>
-      <%= link_to "Remove", user_destroy_role_path(@user, role), method: :delete,
-                  class: ['btn', 'btn-danger', 'btn-xs'] %>
+      <% if policy(@user).destroy_role? %>
+        <%= link_to "Remove", user_destroy_role_path(@user, role), method: :delete,
+                    class: ['btn', 'btn-danger', 'btn-xs'] %>
+      <% end %>
     </li>
   <% end %>
 </ul>
-<%= form_for @user, url: user_new_role_path(@user), method: :post, html: {class: 'form-inline'} do |f| %>
-  <div class="form-group">
-    <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, "id", "name"),
-                   class: 'form-control' %>
-    <%= f.submit "Add role", class: ['btn', 'btn-primary'] %>
-  </div>
+
+<% if policy(@user).new_role? %>
+  <%= form_for @user, url: user_new_role_path(@user), method: :post, html: {class: 'form-inline'} do |f| %>
+    <div class="form-group">
+      <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, "id", "name"),
+                     class: 'form-control' %>
+      <%= f.submit "Add role", class: ['btn', 'btn-primary'] %>
+    </div>
+  <% end %>
 <% end %>
 
 <br>

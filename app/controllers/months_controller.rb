@@ -2,6 +2,8 @@ class MonthsController < ApplicationController
   before_action :load_month, only: [:show, :update, :edit, :destroy]
 
   def index
+    authorize :month, :index?
+
     @months = Month.all
     respond_to do |f|
       f.html
@@ -9,6 +11,8 @@ class MonthsController < ApplicationController
     end
   end
   def show
+    authorize @month
+
     respond_to do |f|
       f.html
       f.json { render json: @months }
@@ -16,6 +20,8 @@ class MonthsController < ApplicationController
   end
 
   def update
+    authorize @month
+
     if @month.update(month_params)
       redirect_to @month
     else
@@ -23,10 +29,13 @@ class MonthsController < ApplicationController
     end
   end
   def edit
+    authorize @month
   end
 
   def create
     @month = Month.new(month_params)
+    authorize @month
+
     if @month.save
       redirect_to @month
     else
@@ -35,9 +44,12 @@ class MonthsController < ApplicationController
   end
   def new
     @month = Month.new
+    authorize @month
   end
 
   def destroy
+    authorize @month
+
     if @month.destroy
       redirect_to root_path
     else

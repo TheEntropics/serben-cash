@@ -1,0 +1,2 @@
+class MonthPolicy < AdminBasePolicy
+end

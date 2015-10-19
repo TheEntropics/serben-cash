@@ -2,6 +2,8 @@ class PaymentsController < ApplicationController
   before_action :load_payment, only: [:show, :update, :edit, :destroy]
 
   def index
+    authorize :payment, :index?
+
     @payments = Payment.all
     respond_to do |f|
       f.html
@@ -9,6 +11,8 @@ class PaymentsController < ApplicationController
     end
   end
   def show
+    authorize @payment
+
     respond_to do |f|
       f.html
       f.json { render json: @payments }
@@ -16,6 +20,8 @@ class PaymentsController < ApplicationController
   end
 
   def update
+    authorize @payment
+
     if @payment.update(payment_params)
       redirect_to @payment
     else
@@ -23,12 +29,15 @@ class PaymentsController < ApplicationController
     end
   end
   def edit
+    authorize @payment
   end
 
   def create
     @payment = Payment.new(payment_params)
-    # TODO: create the corresponding event
+    authorize @payment
+
     if @payment.save
+      # TODO: create the corresponding event
       redirect_to @payment
     else
       render :new
@@ -36,9 +45,12 @@ class PaymentsController < ApplicationController
   end
   def new
     @payment = Payment.new
+    authorize @payment
   end
 
   def destroy
+    authorize @payment
+
     if @payment.destroy
       redirect_to root_path
     else

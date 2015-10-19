@@ -2,6 +2,8 @@ class NotificationsController < ApplicationController
   before_action :load_notification, only: [:show, :update, :edit, :destroy]
 
   def index
+    authorize :notification, :index?
+
     @notifications = Notification.all
     respond_to do |f|
       f.html
@@ -9,6 +11,8 @@ class NotificationsController < ApplicationController
     end
   end
   def show
+    authorize @notification
+
     respond_to do |f|
       f.html
       f.json { render json: @notification }
@@ -16,6 +20,8 @@ class NotificationsController < ApplicationController
   end
 
   def update
+    authorize @notification
+
     if @notification.update(notification_params)
       redirect_to @notification
     else
@@ -23,10 +29,13 @@ class NotificationsController < ApplicationController
     end
   end
   def edit
+    authorize @notification
   end
 
   def create
     @notification = Notification.new(notification_params)
+    authorize @notification
+
     if @notification.save
       redirect_to @notification
     else
@@ -35,9 +44,12 @@ class NotificationsController < ApplicationController
   end
   def new
     @notification = Notification.new
+    authorize @notification
   end
 
   def destroy
+    authorize @notification
+
     if @notification.destroy
       redirect_to root_path
     else
