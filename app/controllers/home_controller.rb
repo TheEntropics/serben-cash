@@ -14,8 +14,4 @@ class HomeController < ApplicationController
 
     @users.each { |user| @grid[user] ||= {} }
   end
-
-  def admin
-    authorize :admin, :index?
-  end
 end
