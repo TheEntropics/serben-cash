@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     authorize @payment
 
-    event = Event.new date: Date.today, amount: 1.0,
+    event = Event.new date: Date.today, amount: PaymentHelper.cost_per_person,
                       description: "Payment of #{@payment.user.name} in #{@payment.month.name}"
 
     begin
@@ -50,6 +50,7 @@ class PaymentsController < ApplicationController
         redirect_to @payment
       end
     rescue
+      new
       render :new
     end
   end

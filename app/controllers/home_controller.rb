@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     @current_month = Month.order(:firstDay).last
     @current_month_paid = 0
     @total_per_month = APP_CONFIG['cost_per_month']
+    @cost_per_user = PaymentHelper.cost_per_person
 
     @grid = {}
     @payments.each do |payment|
@@ -16,7 +17,7 @@ class HomeController < ApplicationController
       @grid[payment.user][payment.month] = payment
 
       if payment.month == @current_month
-        @current_month_paid += 1
+        @current_month_paid += @cost_per_user
       end
     end
 

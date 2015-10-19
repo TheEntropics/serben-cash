@@ -44,11 +44,18 @@
 </table>
 
 <h2>This month <small><%= @current_month.name %></small></h2>
-<div class="progress">
-  <div class="progress-bar" style="width: <%= 100.0*@current_month_paid/@total_per_month %>%;">
-    <%= number_to_currency @current_month_paid, unit: '€ ' %> / <%= number_to_currency @total_per_month, unit: '€ ' %>
+<div class="col-md-9">
+  <div class="progress">
+    <div class="progress-bar <%= 'progress-bar-success' if @current_month_paid >= @total_per_month %>"
+         style="width: <%= 100.0*@current_month_paid/@total_per_month %>%;">
+      <%= number_to_currency @current_month_paid, unit: '€ ' %> / <%= number_to_currency @total_per_month, unit: '€ ' %>
+    </div>
   </div>
 </div>
+<div class="col-md-3">
+  <p><%= number_to_currency @cost_per_user, unit: '€ ' %> per person</p>
+</div>
+<div class="clearfix"></div>
 
 <h2>Balance</h2>
 <table class="table">
