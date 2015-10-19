@@ -16,16 +16,9 @@
 
   <div class="row"><div class="col-md-6">
     <div class="control-group">
-      <%= f.label :name, class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <%= error_span(@month[:name]) %>
-    </div>
-    <div class="control-group">
       <%= f.label :firstDay, class: 'control-label' %>
       <div class="controls">
-        <%= f.text_field :firstDay, class: 'form-control' %>
+        <%= f.date_field :firstDay, class: 'form-control' %>
       </div>
       <%= error_span(@month[:firstDay]) %>
     </div>
