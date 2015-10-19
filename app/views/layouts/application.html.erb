@@ -9,10 +9,6 @@
 <body class="container">
 <h1 class="text-center"><%= link_to "Serben Cash", root_path %></h1>
 <% if current_user %>
-  <p class="text-center">
-    Welcome, <%= current_user.username %>.
-    <%= link_to 'Logout', logout_path, method: :delete %>
-  </p>
   <%= render 'admin_navbar' %>
 <% end %>
 <%= yield %>
