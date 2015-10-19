@@ -30,16 +30,26 @@ class PaymentsController < ApplicationController
   end
   def edit
     authorize @payment
+    @users = User.all
+    @months = Month.all
   end
 
   def create
     @payment = Payment.new(payment_params)
     authorize @payment
 
-    if @payment.save
-      # TODO: create the corresponding event
-      redirect_to @payment
-    else
+    event = Event.new date: Date.today, amount: 1.0,
+                      description: "Payment of #{@payment.user.name} in #{@payment.month.name}"
+
+    begin
+      ActiveRecord::Base.transaction do
+        event.save!
+        @payment.event = event
+        @payment.save!
+
+        redirect_to @payment
+      end
+    rescue
       render :new
     end
   end
@@ -65,8 +75,6 @@ class PaymentsController < ApplicationController
 
   def load_payment
     @payment = Payment.includes(:user, :month, :event).find(params[:id])
-    @users = User.all
-    @months = Month.all
   end
 
   def payment_params
