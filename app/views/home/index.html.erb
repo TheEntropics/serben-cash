@@ -25,8 +25,10 @@
           <%= user.name %>
           <small><%= user.username %></small>
           <% user.roles.each do |role| %>
-            <span class="label label-default"><%= role.name %></span>
+            <span class="label label-info"><%= role.name %></span>
           <% end %>
+          <%= '<span class="label label-danger">banned</span>'.html_safe if user.banned %>
+          <%= '<span class="label label-danger">deleted</span>'.html_safe if user.deleted %>
         </td>
         <% @months.each do |month| %>
           <% if cols[month] == nil %>
@@ -46,7 +48,7 @@
 <h2>This month <small><%= @current_month.name %></small></h2>
 <div class="col-md-9">
   <div class="progress">
-    <div class="progress-bar <%= 'progress-bar-success' if @current_month_paid >= @total_per_month %>"
+    <div class="progress-bar progress-bar-striped <%= 'progress-bar-success' if @current_month_paid >= @total_per_month %>"
          style="width: <%= 100.0*@current_month_paid/@total_per_month %>%;">
       <%= number_to_currency @current_month_paid, unit: '€ ' %> / <%= number_to_currency @total_per_month, unit: '€ ' %>
     </div>

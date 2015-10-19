@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       @grid[payment.user][payment.month] = payment
 
       if payment.month == @current_month
-        @current_month_paid += @cost_per_user
+        @current_month_paid += payment.event.try(:amount) || @cost_per_user
       end
     end
 
