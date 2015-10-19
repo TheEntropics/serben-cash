@@ -6,6 +6,7 @@ gem 'rails', '4.2.4'
 gem 'sqlite3'
 
 gem 'bcrypt'
+gem 'pundit'
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'

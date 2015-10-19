@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   before_action :load_event, only: [:show, :update, :edit, :destroy]
 
   def index
+    authorize :event, :index?
+
     @events = Event.all
     respond_to do |f|
       f.html
@@ -9,6 +11,8 @@ class EventsController < ApplicationController
     end
   end
   def show
+    authorize @event
+
     respond_to do |f|
       f.html
       f.json { render json: @events }
@@ -16,6 +20,8 @@ class EventsController < ApplicationController
   end
 
   def update
+    authorize @event
+
     if @event.update(event_params)
       redirect_to @event
     else
@@ -23,10 +29,13 @@ class EventsController < ApplicationController
     end
   end
   def edit
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
+    authorize @event
+
     if @event.save
       redirect_to @event
     else
@@ -35,9 +44,11 @@ class EventsController < ApplicationController
   end
   def new
     @event = Event.new
+    authorize @event
   end
 
   def destroy
+    authorize @event
     if @event.destroy
       redirect_to root_path
     else
