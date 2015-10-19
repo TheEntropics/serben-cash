@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/login', to: 'login#login', as: 'login'
+  post '/login', to: 'login#do_login'
+  delete '/logout', to: 'login#logout', as: 'logout'
+
   resources :roles
   resources :months
   resources :events
