@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
     @current_month = Month.order(:firstDay).last
     @current_month_paid = 0
-    @total_per_month = 13
+    @total_per_month = APP_CONFIG['cost_per_month']
 
     @grid = {}
     @payments.each do |payment|
