@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
+  get '/admin', to: 'home#admin', as: 'admin'
 
   get '/login', to: 'login#login', as: 'login'
   post '/login', to: 'login#do_login'

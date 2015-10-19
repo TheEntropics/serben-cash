@@ -18,9 +18,4 @@ class AdminBasePolicy < ApplicationPolicy
   def destroy?
     is_admin?
   end
-
-  protected
-  def is_admin?
-    !user.nil?
-  end
 end

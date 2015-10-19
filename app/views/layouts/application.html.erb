@@ -13,6 +13,7 @@
     Welcome, <%= current_user.username %>.
     <%= link_to 'Logout', logout_path, method: :delete %>
   </p>
+  <%= render 'admin_navbar' %>
 <% end %>
 <%= yield %>
 
