@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @payments = Payment.includes(:user, :month, :event).all
+    @payments = Payment.includes({user: :roles}, :month, :event).all
     @events = Event.all
     @months = Month.all
-    @users = User.includes(:users_role, :roles).all
+    @users = User.all
     @notifications = Notification.visible
 
     @current_month = Month.order(:firstDay).last
