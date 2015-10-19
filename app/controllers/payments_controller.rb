@@ -45,6 +45,9 @@ class PaymentsController < ApplicationController
   end
   def new
     @payment = Payment.new
+    @users = User.all
+    @months = Month.all
+
     authorize @payment
   end
 

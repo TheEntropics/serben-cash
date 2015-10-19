@@ -50,7 +50,9 @@ class UsersController < ApplicationController
   def new_role
     authorize @user
 
-    UsersRole.create user: @user, role_id: params[:user][:role_id]
+    role_id = params[:user].try(:[], :role_id)
+
+    UsersRole.create user: @user, role: Role.find(role_id)
     redirect_to @user
   end
 
