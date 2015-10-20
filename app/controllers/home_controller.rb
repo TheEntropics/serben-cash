@@ -7,6 +7,9 @@ class HomeController < ApplicationController
     @notifications = Notification.visible
 
     @current_month = Month.order(:firstDay).last
+    if @current_month.nil?
+      @current_month = Month.create! firstDay: Date.today.beginning_of_month
+    end
     @current_month_paid = 0.0
     @total_per_month = APP_CONFIG['cost_per_month']
     @cost_per_user = PaymentHelper.cost_per_person

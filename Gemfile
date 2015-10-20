@@ -3,7 +3,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
 
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
+
+gem 'puma'
 
 gem 'bcrypt'
 gem 'pundit'
