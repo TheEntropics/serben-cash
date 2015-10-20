@@ -21,3 +21,6 @@
 config/database.yml
 
 public/assets/
+
+start.sh
+vendor/bundle/
