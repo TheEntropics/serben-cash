@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 
+gem 'rb-readline'
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
