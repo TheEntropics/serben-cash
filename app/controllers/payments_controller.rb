@@ -38,7 +38,10 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     authorize @payment
 
-    event = Event.new date: Date.today, amount: PaymentHelper.cost_per_person,
+    date = Date.today
+    date = @payment.month.firstDay if date < @payment.month.firstDay
+
+    event = Event.new date: date, amount: PaymentHelper.cost_per_person,
                       description: "Payment of #{@payment.user.name} in #{@payment.month.name}"
 
     begin

@@ -6,15 +6,12 @@ class HomeController < ApplicationController
     @users = User.all
     @notifications = Notification.visible
 
-    @current_month = Month.order(:firstDay).last
-    if @current_month.nil?
-      @current_month = Month.create! firstDay: Date.today.beginning_of_month
-    end
+    @current_month = Month.find_or_create_by firstDay: Date.today.beginning_of_month
     @current_month_paid = 0.0
     @total_per_month = APP_CONFIG['cost_per_month']
     @cost_per_user = PaymentHelper.cost_per_person
 
-    @total_balance = Event.sum(:amount)
+    @total_balance = Event.where('"date" <= ?', Date.today).sum(:amount)
 
     @grid = {}
     @payments.each do |payment|
