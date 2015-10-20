@@ -50,12 +50,12 @@
   <div class="progress">
     <div class="progress-bar progress-bar-striped <%= 'progress-bar-success' if @current_month_paid >= @total_per_month %>"
          style="width: <%= 100.0*@current_month_paid/@total_per_month %>%;">
-      <%= number_to_currency @current_month_paid, unit: '€ ' %> / <%= number_to_currency @total_per_month, unit: '€ ' %>
+      <%= format_currency @current_month_paid %> / <%= format_currency @total_per_month %>
     </div>
   </div>
 </div>
 <div class="col-md-3">
-  <p><%= number_to_currency @cost_per_user, unit: '€ ' %> per person</p>
+  <p><%= format_currency @cost_per_user %> per person</p>
 </div>
 <div class="clearfix"></div>
 
@@ -63,9 +63,9 @@
 <dl class="dl-horizontal">
   <%- num_month = @months.where('"firstDay" <= ?', Date.today).count %>
   <dt>Registered months</dt><dd><%= num_month %></dd>
-  <dt>Total amount</dt><dd><%= number_to_currency @total_balance, unit: '€ ' %></dd>
-  <dt>Average per month</dt><dd><%= number_to_currency @total_balance/num_month, unit: '€ ' %></dd>
-  <dt>Delta</dt><dd><%= number_to_currency @total_balance-@total_per_month*num_month, unit: '€ ' %></dd>
+  <dt>Total amount</dt><dd><%= format_currency @total_balance %></dd>
+  <dt>Average per month</dt><dd><%= format_currency @total_balance/num_month %></dd>
+  <dt>Delta</dt><dd><%= format_currency @total_balance-@total_per_month*num_month %></dd>
 </dl>
 
 <h2>Balance</h2>
@@ -82,7 +82,7 @@
       <tr>
         <td><%= format_date event.date %></td>
         <td><%= event.description %></td>
-        <td><%= number_to_currency(event.amount, unit: '€ ') %></td>
+        <td><%= format_currency event.amount %></td>
       </tr>
     <% end %>
   </tbody>

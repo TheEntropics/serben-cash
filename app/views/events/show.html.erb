@@ -8,7 +8,7 @@
   <dt><strong><%= Event.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @event.description %></dd>
   <dt><strong><%= Event.human_attribute_name(:amount) %>:</strong></dt>
-  <dd><%= number_to_currency(@event.amount, unit: '€ ') %></dd>
+  <dd><%= format_currency @event.amount %></dd>
 </dl>
 
 <br>
