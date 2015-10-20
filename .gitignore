@@ -23,4 +23,5 @@ config/database.yml
 public/assets/
 
 start.sh
+stop.sh
 vendor/bundle/
