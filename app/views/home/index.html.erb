@@ -68,7 +68,7 @@
   <dt>Delta</dt><dd><%= format_currency @total_balance-@total_per_month*num_month %></dd>
 </dl>
 
-<h2>Balance</h2>
+<h2>Balance <small>Last 20 records</small></h2>
 <table class="table">
   <thead>
     <tr>
@@ -78,7 +78,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @events.each do |event| %>
+    <% @events.last(20).each do |event| %>
       <tr>
         <td><%= format_date event.date %></td>
         <td><%= event.description %></td>
