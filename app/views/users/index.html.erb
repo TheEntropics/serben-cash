@@ -20,8 +20,8 @@
         <td><%= user.name %></td>
         <td><%= user.username %></td>
         <td><%= user.mail %></td>
-        <td><%= user.banned %></td>
-        <td><%= user.deleted %></td>
+        <td><%= boolean_mark user.banned %></td>
+        <td><%= boolean_mark user.deleted %></td>
         <td>
           <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-default btn-xs' %>
           <%= link_to 'Destroy', user_path(user),

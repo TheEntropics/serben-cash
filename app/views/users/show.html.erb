@@ -10,9 +10,9 @@
   <dt><strong><%= User.human_attribute_name(:mail) %>:</strong></dt>
   <dd><%= @user.mail %></dd>
   <dt><strong><%= User.human_attribute_name(:banned) %>:</strong></dt>
-  <dd><%= @user.banned ? 'Y' : 'N' %></dd>
+  <dd><%= boolean_mark @user.banned %></dd>
   <dt><strong><%= User.human_attribute_name(:deleted) %>:</strong></dt>
-  <dd><%= @user.deleted ? 'Y' : 'N' %></dd>
+  <dd><%= boolean_mark @user.deleted %></dd>
 </dl>
 
 <h2>Roles:</h2>
