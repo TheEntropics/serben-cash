@@ -19,7 +19,8 @@
     </tr>
   </thead>
   <tbody>
-    <% @grid.each do |user, cols| %>
+    <% @grid.keys.sort_by { |user| "#{user.deleted}|#{user.banned}|#{user.name}" }.each do |user| %>
+      <%- cols = @grid[user] %>
       <tr class="<%= 'banned' if user.banned %> <%= 'deleted' if user.deleted %>">
         <td>
           <%= user.name %>
