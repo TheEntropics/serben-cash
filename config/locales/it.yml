@@ -30,7 +30,7 @@ it:
   home:
     #TODO set the month name in locale
     #TODO set the currency in locale
-    user: User
+    user: Utente
     banned: bannato
     deleted: rimosso
     this_month: "Questo mese <small>%{name}</small>"
