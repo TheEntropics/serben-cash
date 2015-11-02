@@ -19,6 +19,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 
+gem 'rails-i18n', '~> 4.0.0'
+gem 'http_accept_language'
+
 gem 'rb-readline'
 
 group :development, :test do

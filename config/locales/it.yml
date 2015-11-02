@@ -40,7 +40,7 @@ it:
     average_per_month: Media per mese
     delta: Delta
     balance: Bilancio
-    last_20_records: Ultimi 20
+    last_20_records: Ultimi 20 record
   login:
     login: Login
   events:
@@ -117,3 +117,7 @@ it:
         mail: Mail
         banned: Bannato
         deleted: Rimosso
+
+  date:
+    formats:
+      month: '%B %Y'

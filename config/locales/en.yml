@@ -117,3 +117,8 @@ en:
         mail: Mail
         banned: Banned
         deleted: Deleted
+
+
+  date:
+    formats:
+      month: '%B %Y'
