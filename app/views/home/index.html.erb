@@ -30,6 +30,9 @@
           <% end %>
           <%= '<span class="label label-danger">banned</span>'.html_safe if user.banned %>
           <%= '<span class="label label-danger">deleted</span>'.html_safe if user.deleted %>
+          <% user.additional_badges.each do |badge| %>
+            <%= additional_badge(badge) %>
+          <% end %>
         </td>
         <% @months.each do |month| %>
           <% if cols[month] == nil %>
