@@ -41,6 +41,7 @@ class PaymentsController < ApplicationController
     date = Date.today
     date = @payment.month.firstDay if date < @payment.month.firstDay
 
+    #TODO translate that
     event = Event.new date: date, amount: PaymentHelper.cost_per_person,
                       description: "Payment of #{@payment.user.name} in #{@payment.month.name}"
 

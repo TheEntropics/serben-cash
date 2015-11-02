@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Users</h1>
+  <h1><%=t 'users.users' %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -10,7 +10,7 @@
       <th><%= User.human_attribute_name(:mail) %></th>
       <th><%= User.human_attribute_name(:banned) %></th>
       <th><%= User.human_attribute_name(:deleted) %></th>
-      <th>Actions</th>
+      <th><%=t 'actions' %></th>
     </tr>
   </thead>
   <tbody>
@@ -23,10 +23,10 @@
         <td><%= boolean_mark user.banned %></td>
         <td><%= boolean_mark user.deleted %></td>
         <td>
-          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-default btn-xs' %>
-          <%= link_to 'Destroy', user_path(user),
+          <%= link_to t('edit'), edit_user_path(user), class: 'btn btn-default btn-xs' %>
+          <%= link_to t('destroy'), user_path(user),
                       method: :delete,
-                      data: { confirm: 'Are you sure?' },
+                      data: { confirm: t('confirm') },
                       class: 'btn btn-xs btn-danger' %>
         </td>
       </tr>
@@ -34,4 +34,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
+<%= link_to t('users.new_user'), new_user_path, class: 'btn btn-primary' %>
