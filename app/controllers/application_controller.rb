@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include HttpAcceptLanguage::AutoLocale
+
   protect_from_forgery with: :exception
 
   helper_method :current_user

@@ -1,0 +1,124 @@
+it:
+  back: Indietro
+  cancel: Annulla
+  edit: Modifica
+  destroy: Elimina
+  remove: Rimuovi
+  confirm: Sei sicuro?
+  actions: Azioni
+  title: Serben Cash
+  balance_payment: "Pagamento di %{user} in %{month}"
+
+  #TODO translate balance entries
+
+  badges:
+    gentleman: gentleman
+    rotten: marcio
+
+  navbar:
+    admin: Admin
+    add_payment: Aggiungi Pagamento
+    lists: Liste
+    add: Aggiungi
+    user: Utente
+    role: Ruolo
+    month: Mese
+    notification: Notifica
+    payment: Pagamento
+    event: Evento
+    login: "Connesso come <samp>%{username}</samp>"
+    logout: Logout
+  home:
+    #TODO set the month name in locale
+    #TODO set the currency in locale
+    user: Utente
+    banned: bannato
+    deleted: rimosso
+    this_month: "Questo mese <small>%{name}</small>"
+    statistics: Statistiche
+    registered_months: Mesi registrati
+    total_amount: Denaro totale
+    average_per_month: Media per mese
+    delta: Delta
+    balance: Bilancio
+    last_20_records: Ultimi 20 record
+  login:
+    login: Login
+  events:
+    #TODO add the error header
+    edit_event: Modifica evento
+    event: Evento
+    events: Eventi
+    new_event: Nuovo evento
+  months:
+    #TODO add the error header
+    edit_month: Modifica mese
+    months: Mesi
+    month: Mese
+    new_month: Nuovo mese
+  notifications:
+    #TODO add the error header
+    edit_notification: Modifica notifica
+    notifications: Notifiche
+    notification: Notifica
+    new_notification: Nuova notifica
+  payments:
+    #TODO add the error header
+    edit_payment: Modifica pagamento
+    payments: Pagamenti
+    payment: Pagamento
+    new_payment: Nuovo pagamento
+  roles:
+    #TODO add the error header
+    edit_role: Modifica ruolo
+    roles: Ruoli
+    role: Ruolo
+    new_role: Nuovo ruolo
+  users:
+    #TODO add the error header
+    edit_user: Modifica utente
+    users: Utenti
+    user: Utente
+    new_user: Nuovo utente
+    roles: Ruoli
+    add_role: Aggiungi ruolo
+
+  activerecord:
+    models:
+      event: Evento
+      credential: Credenziale
+      month: Mese
+      notification: Notifica
+      payment: Pagamento
+      role: Ruolo
+      user: Utente
+    attributes:
+      event:
+        date: Data
+        description: Descrizione
+        amount: Quantità
+      credential:
+        username: Username
+        password: Password
+      month:
+        name: Nome
+        firstDay: Primo giorno
+      notification:
+        text: Testo
+        importance: Importanza
+        elapseDate: Scadenza
+      payment:
+        user: Utente
+        month: Mese
+      role:
+        name: Nome
+      user:
+        name: Nome
+        username: Username
+        mail: Mail
+        banned: Bannato
+        deleted: Rimosso
+
+  date:
+    formats:
+      month: '%B %Y'

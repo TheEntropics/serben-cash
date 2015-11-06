@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Payments</h1>
+  <h1><%=t 'payments.payments' %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -7,7 +7,7 @@
     <th><%= Payment.human_attribute_name(:id) %></th>
     <th><%= Payment.human_attribute_name(:payment) %></th>
     <th><%= Payment.human_attribute_name(:month) %></th>
-    <th>Actions</th>
+    <th><%=t 'actions' %></th>
   </tr>
   </thead>
   <tbody>
@@ -17,10 +17,10 @@
       <td><%= payment.user.name %></td>
       <td><%= payment.month.name %></td>
       <td>
-        <%= link_to 'Edit', edit_payment_path(payment), class: 'btn btn-default btn-xs' %>
-        <%= link_to 'Destroy', payment_path(payment),
+        <%= link_to t('edit'), edit_payment_path(payment), class: 'btn btn-default btn-xs' %>
+        <%= link_to t('destroy'), payment_path(payment),
                     method: :delete,
-                    data: { confirm: 'Are you sure?' },
+                    data: { confirm: t('confirm') },
                     class: 'btn btn-xs btn-danger' %>
       </td>
     </tr>
@@ -28,4 +28,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New Payment', new_payment_path, class: 'btn btn-primary' %>
+<%= link_to t('payments.new_payment'), new_payment_path, class: 'btn btn-primary' %>

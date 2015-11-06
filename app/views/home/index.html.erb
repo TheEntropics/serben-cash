@@ -9,12 +9,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th>User</th>
+      <th><%=t 'home.user' %></th>
       <% @months.each do |month| %>
         <th><%= month.name %></th>
       <% end %>
       <% if current_user %>
-        <th>Actions</th>
+        <th><%=t 'actions' %></th>
       <% end %>
     </tr>
   </thead>
@@ -28,8 +28,8 @@
           <% user.roles.each do |role| %>
             <span class="label label-info"><%= role.name %></span>
           <% end %>
-          <%= '<span class="label label-danger">banned</span>'.html_safe if user.banned %>
-          <%= '<span class="label label-danger">deleted</span>'.html_safe if user.deleted %>
+          <%= "<span class='label label-danger'>#{t 'home.banned'}</span>".html_safe if user.banned %>
+          <%= "<span class='label label-danger'>#{t 'home.deleted'}</span>".html_safe if user.deleted %>
           <% user.additional_badges.each do |badge| %>
             <%= additional_badge(badge) %>
           <% end %>
@@ -42,14 +42,14 @@
           <% end %>
         <% end %>
         <% if current_user %>
-          <td><%= link_to 'Edit', edit_user_path(user), class: ['btn', 'btn-warning', 'btn-xs'] %></td>
+          <td><%= link_to t('edit'), edit_user_path(user), class: ['btn', 'btn-warning', 'btn-xs'] %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<h2>This month <small><%= @current_month.name %></small></h2>
+<h2><%=raw t 'home.this_month', name: @current_month.name %></h2>
 <div class="col-md-9">
   <div class="progress">
     <div class="progress-bar progress-bar-striped <%= 'progress-bar-success' if @current_month_paid >= @total_per_month %>"
@@ -63,22 +63,22 @@
 </div>
 <div class="clearfix"></div>
 
-<h3>Statistics</h3>
+<h3><%=t 'home.statistics' %></h3>
 <dl class="dl-horizontal">
   <%- num_month = @months.where('"firstDay" <= ?', Date.today).count %>
-  <dt>Registered months</dt><dd><%= num_month %></dd>
-  <dt>Total amount</dt><dd><%= format_currency @total_balance %></dd>
-  <dt>Average per month</dt><dd><%= format_currency @total_balance/num_month %></dd>
-  <dt>Delta</dt><dd><%= format_currency @total_balance-@total_per_month*num_month %></dd>
+  <dt><%=t 'home.registered_months' %></dt><dd><%= num_month %></dd>
+  <dt><%=t 'home.total_amount' %></dt><dd><%= format_currency @total_balance %></dd>
+  <dt><%=t 'home.average_per_month' %></dt><dd><%= format_currency @total_balance/num_month %></dd>
+  <dt><%=t 'home.delta' %></dt><dd><%= format_currency @total_balance-@total_per_month*num_month %></dd>
 </dl>
 
-<h2>Balance <small>Last 20 records</small></h2>
+<h2><%=t 'home.balance' %> <small><%=t 'home.last_20_records' %></small></h2>
 <table class="table">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Details</th>
-      <th>Amount</th>
+      <th><%= Event.human_attribute_name(:date) %></th>
+      <th><%= Event.human_attribute_name(:details) %></th>
+      <th><%= Event.human_attribute_name(:amount) %></th>
     </tr>
   </thead>
   <tbody>

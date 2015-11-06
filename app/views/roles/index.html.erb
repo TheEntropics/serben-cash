@@ -1,12 +1,12 @@
 <div class="page-header">
-  <h1>Roles</h1>
+  <h1><%=t 'roles.roles' %></h1>
 </div>
 <table class="table table-striped">
   <thead>
   <tr>
     <th><%= Role.human_attribute_name(:id) %></th>
     <th><%= Role.human_attribute_name(:name) %></th>
-    <th>Actions</th>
+    <th><%=t 'actions' %></th>
   </tr>
   </thead>
   <tbody>
@@ -15,10 +15,10 @@
       <td><%= link_to role.id, role_path(role) %></td>
       <td><%= role.name %></td>
       <td>
-        <%= link_to 'Edit', edit_role_path(role), class: 'btn btn-default btn-xs' %>
-        <%= link_to 'Destroy', role_path(role),
+        <%= link_to t('edit'), edit_role_path(role), class: 'btn btn-default btn-xs' %>
+        <%= link_to t('destroy'), role_path(role),
                     method: :delete,
-                    data: { confirm: 'Are you sure?' },
+                    data: { confirm: t('confirm') },
                     class: 'btn btn-xs btn-danger' %>
       </td>
     </tr>
@@ -26,4 +26,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New Role', new_role_path, class: 'btn btn-primary' %>
+<%= link_to t('roles.new_role'), new_role_path, class: 'btn btn-primary' %>

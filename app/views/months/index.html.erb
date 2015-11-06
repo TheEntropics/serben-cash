@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Months</h1>
+  <h1><%=t 'months.months' %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -7,7 +7,7 @@
     <th><%= Month.human_attribute_name(:id) %></th>
     <th><%= Month.human_attribute_name(:name) %></th>
     <th><%= Month.human_attribute_name(:firstDay) %></th>
-    <th>Actions</th>
+    <th><%=t 'actions' %></th>
   </tr>
   </thead>
   <tbody>
@@ -17,10 +17,10 @@
       <td><%= month.name %></td>
       <td><%= format_date month.firstDay %></td>
       <td>
-        <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-default btn-xs' %>
-        <%= link_to 'Destroy', month_path(month),
+        <%= link_to t('edit'), edit_month_path(month), class: 'btn btn-default btn-xs' %>
+        <%= link_to t('destroy'), month_path(month),
                     method: :delete,
-                    data: { confirm: 'Are you sure?' },
+                    data: { confirm: t('confirm') },
                     class: 'btn btn-xs btn-danger' %>
       </td>
     </tr>
@@ -28,4 +28,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New Month', new_month_path, class: 'btn btn-primary' %>
+<%= link_to t('months.new_month'), new_month_path, class: 'btn btn-primary' %>

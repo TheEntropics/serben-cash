@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>User</h1>
+  <h1><%=t 'users.user' %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -15,13 +15,13 @@
   <dd><%= boolean_mark @user.deleted %></dd>
 </dl>
 
-<h2>Roles:</h2>
+<h2><%=t 'users.roles' %>:</h2>
 <ul>
   <% @roles.each do |role| %>
     <li>
       <%= role.name %>
       <% if policy(@user).destroy_role? %>
-        <%= link_to "Remove", user_destroy_role_path(@user, role), method: :delete,
+        <%= link_to t('remove'), user_destroy_role_path(@user, role), method: :delete,
                     class: ['btn', 'btn-danger', 'btn-xs'] %>
       <% end %>
     </li>
@@ -31,17 +31,17 @@
 <% if policy(@user).new_role? %>
   <%= form_for @user, url: user_new_role_path(@user), method: :post, html: {class: 'form-inline'} do |f| %>
     <div class="form-group">
-      <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, "id", "name"),
+      <%= select_tag 'user[role_id]', options_from_collection_for_select(Role.all, 'id', 'name'),
                      class: 'form-control' %>
-      <%= f.submit "Add role", class: ['btn', 'btn-primary'] %>
+      <%= f.submit t('users.add_role'), class: ['btn', 'btn-primary'] %>
     </div>
   <% end %>
 <% end %>
 
 <br>
-  <%= link_to 'Back', users_path, class: 'btn btn-default'  %>
-  <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default' %>
-  <%= link_to 'Destroy', user_path(@user),
+  <%= link_to t('back'), users_path, class: 'btn btn-default'  %>
+  <%= link_to t('edit'), edit_user_path(@user), class: 'btn btn-default' %>
+  <%= link_to t('destroy'), user_path(@user),
                 method: 'delete',
-                data: { confirm: 'Are you sure?' },
+                data: { confirm: t('confirm') },
                 class: 'btn btn-danger' %>

@@ -1,23 +1,125 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  back: Back
+  cancel: Cancel
+  edit: Edit
+  destroy: Destroy
+  remove: Remove
+  confirm: Are you sure?
+  actions: Actions
+  title: Serben Cash
+  balance_payment: "Payment of %{user} in %{month}"
+
+  #TODO translate balance entries
+
+  badges:
+    gentleman: gentleman
+    rotten: rotten
+
+  navbar:
+    admin: Admin
+    add_payment: Add Payment
+    lists: Lists
+    add: Add
+    user: User
+    role: Role
+    month: Month
+    notification: Notification
+    payment: Payment
+    event: Event
+    login: "Logged in as <samp>%{username}</samp>"
+    logout: Logout
+  home:
+    #TODO set the month name in locale
+    #TODO set the currency in locale
+    user: User
+    banned: banned
+    deleted: deleted
+    this_month: "This month <small>%{name}</small>"
+    statistics: Statistics
+    registered_months: Registered months
+    total_amount: Total amount
+    average_per_month: Average per month
+    delta: Delta
+    balance: Balance
+    last_20_records: Last 20 records
+  login:
+    login: Login
+  events:
+    #TODO add the error header
+    edit_event: Edit Event
+    event: Event
+    events: Events
+    new_event: New Event
+  months:
+    #TODO add the error header
+    edit_month: Edit Month
+    months: Months
+    month: Month
+    new_month: New Month
+  notifications:
+    #TODO add the error header
+    edit_notification: Edit Notification
+    notifications: Notifications
+    notification: Notification
+    new_notification: New Notification
+  payments:
+    #TODO add the error header
+    edit_payment: Edit Payment
+    payments: Payments
+    payment: Payment
+    new_payment: New Payment
+  roles:
+    #TODO add the error header
+    edit_role: Edit Role
+    roles: Roles
+    role: Role
+    new_role: New Role
+  users:
+    #TODO add the error header
+    edit_user: Edit User
+    users: Users
+    user: User
+    new_user: New User
+    roles: Roles
+    add_role: Add Role
+
+  activerecord:
+    models:
+      event: Event
+      credential: Credential
+      month: Month
+      notification: Notification
+      payment: Payment
+      role: Role
+      user: User
+    attributes:
+      event:
+        date: Date
+        description: Description
+        amount: Amount
+      credential:
+        username: Username
+        password: Password
+      month:
+        name: Name
+        firstDay: First day
+      notification:
+        text: Text
+        importance: Importance
+        elapseDate: Elapse date
+      payment:
+        user: User
+        month: Month
+      role:
+        name: Name
+      user:
+        name: Name
+        username: Username
+        mail: Mail
+        banned: Banned
+        deleted: Deleted
+
+
+  date:
+    formats:
+      month: '%B %Y'

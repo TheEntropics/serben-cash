@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Month</h1>
+  <h1><%=t 'months.month' %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -10,9 +10,9 @@
 </dl>
 
 <br>
-<%= link_to 'Back', months_path, class: 'btn btn-default'  %>
-<%= link_to 'Edit', edit_month_path(@month), class: 'btn btn-default' %>
-<%= link_to 'Destroy', month_path(@month),
+<%= link_to t('back'), months_path, class: 'btn btn-default'  %>
+<%= link_to t('edit'), edit_month_path(@month), class: 'btn btn-default' %>
+<%= link_to t('destroy'), month_path(@month),
             method: 'delete',
-            data: { confirm: 'Are you sure?' },
+            data: { confirm: t('confirm') },
             class: 'btn btn-danger' %>

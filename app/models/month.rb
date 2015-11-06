@@ -7,6 +7,6 @@ class Month < ActiveRecord::Base
   has_many :payments
 
   def name
-    firstDay && firstDay.strftime('%B %Y')
+    I18n.l firstDay, format: :month
   end
 end

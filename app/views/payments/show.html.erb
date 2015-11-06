@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Payment</h1>
+  <h1><%=t 'payments.payment' %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -10,9 +10,9 @@
 </dl>
 
 <br>
-<%= link_to 'Back', payments_path, class: 'btn btn-default'  %>
-<%= link_to 'Edit', edit_payment_path(@payment), class: 'btn btn-default' %>
-<%= link_to 'Destroy', payment_path(@payment),
+<%= link_to t('back'), payments_path, class: 'btn btn-default'  %>
+<%= link_to t('edit'), edit_payment_path(@payment), class: 'btn btn-default' %>
+<%= link_to t('destroy'), payment_path(@payment),
             method: 'delete',
-            data: { confirm: 'Are you sure?' },
+            data: { confirm: t('confirm') },
             class: 'btn btn-danger' %>
