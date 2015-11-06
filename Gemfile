@@ -21,6 +21,8 @@ gem 'turbolinks'
 
 gem 'rb-readline'
 
+gem 'quiet_assets', group: :development
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
