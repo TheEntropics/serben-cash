@@ -7,6 +7,7 @@ it:
   confirm: Sei sicuro?
   actions: Azioni
   title: Serben Cash
+  balance_payment: "Pagamento di %{user} in %{month}"
 
   #TODO translate balance entries
 
