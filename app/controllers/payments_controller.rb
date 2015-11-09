@@ -41,7 +41,6 @@ class PaymentsController < ApplicationController
     date = Date.today
     date = @payment.month.firstDay if date < @payment.month.firstDay
 
-    #TODO translate that
     event = Event.new date: date, amount: PaymentHelper.cost_per_person,
                       description: "Payment of #{@payment.user.name} in #{@payment.month.name}"
 
@@ -53,7 +52,9 @@ class PaymentsController < ApplicationController
 
         redirect_to @payment
       end
-    rescue
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.inspect
       new
       render :new
     end
