@@ -16,7 +16,7 @@
     <tr>
       <td><%= link_to event.id, event_path(event) %></td>
       <td><%= format_date event.date %></td>
-      <td><%= event.description %></td>
+      <td><%= event.locale_description %></td>
       <td><%= format_currency event.amount %></td>
       <td>
         <%= link_to t('edit'), edit_event_path(event), class: 'btn btn-default btn-xs' %>

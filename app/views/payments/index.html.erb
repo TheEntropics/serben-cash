@@ -15,7 +15,7 @@
     <tr>
       <td><%= link_to payment.id, payment_path(payment) %></td>
       <td><%= payment.user.name %></td>
-      <td><%= payment.month.name %></td>
+      <td><%= payment.month.locale_name %></td>
       <td>
         <%= link_to t('edit'), edit_payment_path(payment), class: 'btn btn-default btn-xs' %>
         <%= link_to t('destroy'), payment_path(payment),

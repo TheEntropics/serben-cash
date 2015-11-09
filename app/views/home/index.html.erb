@@ -11,7 +11,7 @@
     <tr>
       <th><%=t 'home.user' %></th>
       <% @months.each do |month| %>
-        <th><%= month.name %></th>
+        <th><%= month.locale_name %></th>
       <% end %>
       <% if current_user %>
         <th><%=t 'actions' %></th>
@@ -49,7 +49,7 @@
   </tbody>
 </table>
 
-<h2><%=raw t 'home.this_month', name: @current_month.name %></h2>
+<h2><%=raw t 'home.this_month', name: @current_month.locale_name %></h2>
 <div class="col-md-9">
   <div class="progress">
     <div class="progress-bar progress-bar-striped <%= 'progress-bar-success' if @current_month_paid >= @total_per_month %>"
@@ -85,7 +85,7 @@
     <% @events.last(20).each do |event| %>
       <tr>
         <td><%= format_date event.date %></td>
-        <td><%= event.description %></td>
+        <td><%= event.locale_description %></td>
         <td><%= format_currency event.amount %></td>
       </tr>
     <% end %>

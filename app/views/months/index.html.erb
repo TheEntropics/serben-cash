@@ -14,7 +14,7 @@
   <% @months.each do |month| %>
     <tr>
       <td><%= link_to month.id, month_path(month) %></td>
-      <td><%= month.name %></td>
+      <td><%= month.locale_name %></td>
       <td><%= format_date month.firstDay %></td>
       <td>
         <%= link_to t('edit'), edit_month_path(month), class: 'btn btn-default btn-xs' %>

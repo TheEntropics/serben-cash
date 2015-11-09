@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 
   has_many :payments
 
-  def description
+  def locale_description
     if match = /Payment of (.*) in (.*)/.match(attribute(:description))
       user = match[1]
       month = Date.parse(match[2])

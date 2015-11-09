@@ -54,7 +54,7 @@ class PaymentsController < ApplicationController
       end
     rescue Exception => e
       logger.error e.message
-      logger.error e.backtrace.inspect
+      e.backtrace.each {|l| logger.error(l)}
       new
       render :new
     end

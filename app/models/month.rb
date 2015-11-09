@@ -7,6 +7,10 @@ class Month < ActiveRecord::Base
   has_many :payments
 
   def name
+    I18n.l firstDay, format: :month, locale: :en
+  end
+
+  def locale_name
     I18n.l firstDay, format: :month
   end
 end
