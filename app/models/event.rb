@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   validates_presence_of :date, :description, :amount
 
-  default_scope ->{ order(:date) }
+  default_scope ->{ order('date DESC') }
 
   has_many :payments
 
