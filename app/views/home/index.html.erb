@@ -82,7 +82,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @events.last(20).each do |event| %>
+    <% @events.limit(20).each do |event| %>
       <tr>
         <td><%= format_date event.date %></td>
         <td><%= event.locale_description %></td>
