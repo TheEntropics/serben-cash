@@ -22,6 +22,8 @@ gem 'turbolinks'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'http_accept_language'
 
+gem 'whenever', require: false
+
 gem 'rb-readline'
 
 gem 'quiet_assets', group: :development

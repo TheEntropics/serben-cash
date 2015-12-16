@@ -1,0 +1,7 @@
+<%=t 'notification_mailer.hi', name: @user.name, username: @user.username %>
+<%=t 'notification_mailer.body' %>
+<% @user.missing_months.each do |month| %>
+  - <%= month.locale_name %>
+<% end %>
+
+serben.tk staff

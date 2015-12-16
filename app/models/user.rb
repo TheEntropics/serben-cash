@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
     @additional_badges
   end
 
+  def missing_months
+    past = payments.joins(:month).where('"firstDay" <= ?', Date.today.beginning_of_month).order('firstDay')
+    return [] if past.size == 0
+    ids = Month.where('"firstDay" >= ?', past.first.month.firstDay).pluck(:id) - past.pluck(:month_id)
+    Month.find(ids)
+  end
+
   protected
   def add_gentleman_badge
     has_gentleman_payment = payments.joins(:month).where('"firstDay" > ?', Date.today.end_of_month).count
@@ -23,7 +30,8 @@ class User < ActiveRecord::Base
   end
 
   def add_rotten_badge
-    has_missing_payment = payments.joins(:month).where('"firstDay" = ?', Date.today.beginning_of_month).count
-    @additional_badges.push([I18n.t('badges.rotten'), 'label-danger']) if has_missing_payment == 0
+    if !deleted && !banned && missing_months.size != 0
+      @additional_badges.push([I18n.t('badges.rotten'), 'label-danger'])
+    end
   end
 end

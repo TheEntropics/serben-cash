@@ -82,6 +82,17 @@ en:
     new_user: New User
     roles: Roles
     add_role: Add Role
+  notification_mailer:
+    subject: You have to pay!
+    hi: Hi, %{name} (%{username})
+    hi_html: "Hi, %{name} <small>%{username}</small>"
+    body: |
+      Remember that you have to pay the server!
+      You haven't paid for these months:
+    body_html: |
+      <p>Remember that you have to pay the server!</p>
+      <p>You haven't paid for these months:</p>
+
 
   activerecord:
     models:

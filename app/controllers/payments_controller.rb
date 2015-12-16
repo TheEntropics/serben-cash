@@ -49,14 +49,15 @@ class PaymentsController < ApplicationController
         event.save!
         @payment.event = event
         @payment.save!
-
-        redirect_to @payment
       end
+
+      redirect_to @payment
     rescue Exception => e
       logger.error e.message
       e.backtrace.each {|l| logger.error(l)}
       new
       render :new
+      return
     end
   end
   def new
