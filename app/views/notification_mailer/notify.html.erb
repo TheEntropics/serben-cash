@@ -2,7 +2,7 @@
 <%=t 'notification_mailer.body_html' %>
 
 <ul>
-  <% @user.missing_months.each do |month| %>
+  <% @user.missing_months(Date.today.next_month.beginning_of_month).each do |month| %>
     <li><%= month.locale_name %></li>
   <% end %>
 </ul>

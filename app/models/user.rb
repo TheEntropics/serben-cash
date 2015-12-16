@@ -16,10 +16,10 @@ class User < ActiveRecord::Base
     @additional_badges
   end
 
-  def missing_months
+  def missing_months(target_month = Date.today.beginning_of_month)
     past = payments.joins(:month).where('"firstDay" <= ?', Date.today.beginning_of_month).order('"firstDay"')
     return [] if past.size == 0
-    ids = Month.where('"firstDay" >= ?', past.first.month.firstDay).where('"firstDay" <= ?', Date.today.beginning_of_month).pluck(:id) - past.pluck(:month_id)
+    ids = Month.where('"firstDay" >= ?', past.first.month.firstDay).where('"firstDay" <= ?', target_month).pluck(:id) - past.pluck(:month_id)
     Month.find(ids)
   end
 
