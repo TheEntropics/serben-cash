@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   def missing_months
     past = payments.joins(:month).where('"firstDay" <= ?', Date.today.beginning_of_month).order('"firstDay"')
     return [] if past.size == 0
-    ids = Month.where('"firstDay" >= ?', past.first.month.firstDay).pluck(:id) - past.pluck(:month_id)
+    ids = Month.where('"firstDay" >= ?', past.first.month.firstDay).where('"firstDay" <= ?', Date.today.beginning_of_month).pluck(:id) - past.pluck(:month_id)
     Month.find(ids)
   end
 
