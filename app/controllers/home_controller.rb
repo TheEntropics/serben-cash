@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     @events.where('date >= ?', @current_month.firstDay).
             where('date <= ?', @current_month.firstDay.end_of_month).
             each do |event|
-      @current_month_paid += event.amount
+      @current_month_paid += event.amount if event.payments.length > 0
     end
 
     @users.each { |user| @grid[user] ||= {} }

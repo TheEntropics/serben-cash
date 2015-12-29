@@ -82,9 +82,9 @@
     </tr>
   </thead>
   <tbody>
-    <% @events.limit(20).each do |event| %>
+    <% Event.unscoped.order("created_at desc").limit(20).each do |event| %>
       <tr>
-        <td><%= format_date event.date %></td>
+        <td><%= format_date event.created_at %></td>
         <td><%= event.locale_description %></td>
         <td><%= format_currency event.amount %></td>
       </tr>
